@@ -1,6 +1,7 @@
 import * as dbConnection from '../shared/dbConnect';
 import {PatientModels} from '../shared/model/patient';
 import { Context, HttpRequest } from "@azure/functions";
+import * as mongoose from 'mongoose';
 
 
 export async function addPatient(context: Context, req: HttpRequest) {

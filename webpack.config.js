@@ -7,7 +7,8 @@ module.exports = {
   'patient-add/index':'./patient-add/src/index.ts',
   'patient-delete/index':'./patient-delete/src/index.ts',
   'patient-get/index':'./patient-get/src/index.ts',
-  'patient-update/index':'./patient-update/src/index.ts'
+  'patient-update/index':'./patient-update/src/index.ts',
+  'patient-get/spec':'./patient-get/src/spec.js',
   },  
   devtool:'source-map',
   module :{
@@ -16,9 +17,25 @@ module.exports = {
       use:'ts-loader',
       exclude:/node_modules/
     },],
+    loaders: [
+      {exclude: ['node_modules'], loader: 'babel', test: /\.jsx?$/},
+      {loader: 'style-loader!css-loader', test: /\.css$/},
+      {loader: 'url-loader', test: /\.gif$/},
+      {loader: 'file-loader', test: /\.(ttf|eot|svg)$/},
+    ],
   },  
   resolve:{
-    extensions:['.tsx','.ts','.js']
+    alias: {
+      config$: './configs/app-config.js',
+      react: './vendor/react-master',
+    },
+    extensions:['.tsx','.ts','.js'],
+    modules: [
+      'node_modules',
+      'bower_components',
+      'shared',
+      '/shared/vendor/modules',
+    ],
   },  
 
  output: {filename: '[name].js',

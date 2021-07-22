@@ -1,6 +1,8 @@
-import {getModelForClass,prop} from "@typegoose/typegoose";
+import {getModelForClass,modelOptions,prop} from "@typegoose/typegoose";
 
-class Patient{
+@modelOptions({ schemaOptions: { collection: 'PatientDetails' } })
+
+class PatientDetails{
 
     readonly _id: string;
 
@@ -20,4 +22,4 @@ class Patient{
     public phone :string;
 
 }
-export const PatientModels=getModelForClass(Patient);
+export const PatientModels=getModelForClass(PatientDetails);
